@@ -1,0 +1,30 @@
+@model Song
+<h1>Add a song here</h1>
+<form action="/song/add" method="post">
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input asp-for="Title" class="form-control">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="DurMinutes">Duration</label>
+        <input asp-for="DurMinutes" class="col-1">
+        <span>:</span>
+        <input asp-for="DurSeconds" class="col-1">
+        <span asp-validation-for="DurMinutes" class="text-danger"></span>
+        <span asp-validation-for="DurSeconds" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Genre">Genre</label>
+        <select asp-for="Genre" class="form-control">
+            <option value="Rock">Rock</option>
+            <option value="Electronic">Electronic</option>
+            <option value="Ska">Ska</option>
+            <option value="Metal">Metal</option>
+            <option value="Raggae">Raggae</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add Song" class="btn btn-warning">
+    </div>
+</form>

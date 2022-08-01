@@ -1,0 +1,15 @@
+@model Song
+<h1>@Model.Title</h1>
+<h3>Duration: @Model.DurMinutes:@Model.DurSeconds</h3>
+<h3>Artist: @Model.Artist.Name</h3>
+<h3>Genre: @Model.Genre</h3>
+<h4>Likes: @Model.UsersWhoLiked.Count</h4>
+@if(Model.UserId == @Context.Session.GetInt32("UserId"))
+{
+    <h4><a href="/song/delete/@Model.SongId">Delete</a></h4>
+} else {
+    if(@Model.UsersWhoLiked.Any(s => s.UserId == @Context.Session.GetInt32("UserId")))
+    { } else {
+        <h4><a href="/song/like/@Model.SongId">Like this song</a></h4>
+    }
+}

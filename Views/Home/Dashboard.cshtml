@@ -1,0 +1,47 @@
+<h1>Welcome @ViewBag.LoggedIn.Name!</h1>
+<div class="row">
+    <div class="col-6">
+        <h3>All my songs</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Genre</th>
+                <th>Likes</th>
+                <th>Actions</th>
+            </tr>
+            @foreach(Song s in ViewBag.LoggedIn.SongsWritten)
+            {
+                <tr>
+                    <td><a href="/song/@s.SongId">@s.Title</a></td>
+                    <td>@s.DurMinutes:@s.DurSeconds</td>
+                    <td>@s.Genre</td>
+                    <td>0</td>
+                    <td><a href="/song/delete/@s.SongId">Delete</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-6">
+        <h3>Top songs</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Duration</th>
+                <th>Genre</th>
+                <th>Likes</th>
+            </tr>
+            @foreach(Song s in ViewBag.Top)
+            {
+                <tr>
+                    <td><a href="/song/@s.SongId">@s.Title</a></td>
+                    <td>@s.Artist.Name</td>
+                    <td>@s.DurMinutes:@s.DurSeconds</td>
+                    <td>@s.Genre</td>
+                    <td>@s.UsersWhoLiked.Count</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
